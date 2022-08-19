@@ -80,22 +80,6 @@
       }
     },
     {
-      "type": "clashRuleSetClassical",
-      "action": "add",
-      "args": {
-        "name": "tgsg",
-        "uri": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramSG/TelegramSG.yaml"
-      }
-    },
-	  {
-      "type": "clashRuleSetClassical",
-      "action": "add",
-      "args": {
-        "name": "tgus",
-        "uri": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TelegramUS/TelegramUS.yaml"
-      }
-    },
-    {
       "type": "text",
       "action": "add",
       "args": {
