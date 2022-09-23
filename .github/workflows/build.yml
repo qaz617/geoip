@@ -44,6 +44,10 @@ jobs:
           curl -sSL https://www.cloudflare.com/ips-v6 | grep "/" >> data/cloudflare
           curl -sSL https://api.fastly.com/public-ip-list | jq --raw-output '.addresses[],.ipv6_addresses[]' >> data/fastly
           curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/cloudfront
+          curl -sSL https://raw.githubusercontent.com/QiuSimons/Netflix_IP/master/NF_only.txt | grep "/" >>data/netflix
+          curl -O "https://raw.githubusercontent.com/VirgilClyne/VirgilClyne/main/modules/ASN/ASN.Telegram.list" 
+          awk '{match($0, /[0-9]+\.[0-9]+\.[0-9]+\.*[0-9]+\/[0-9]+/); print substr($0, RSTART, RLENGTH)}' ASN.Telegram.list >>data/telegram
+          rm ASN.Telegram.list
 
       - name: Get GeoLite2
         env:
