@@ -30,7 +30,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "mark": "ipip.net"
+        "mark": "ipip.net",
         "uri": "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt",
         "onlyIPType": "ipv4"
       }
@@ -40,7 +40,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "mark": "苍狼v4"
+        "mark": "苍狼v4",
         "uri": "https://ispip.clang.cn/all_cn.txt",
         "onlyIPType": "ipv4"
       }
@@ -50,7 +50,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "mark": "纯真"
+        "mark": "纯真",
         "uri": "https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt",
         "onlyIPType": "ipv4"
       }
@@ -60,7 +60,7 @@
       "action": "add",
       "args": {
         "name": "cn",
-        "mark": "高一凡v4"
+        "mark": "高一凡v4",
         "uri": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/china.txt",
         "onlyIPType": "ipv4"
       }
