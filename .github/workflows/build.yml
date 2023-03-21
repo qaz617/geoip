@@ -17,10 +17,10 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Go 1.x.y
-        uses: actions/setup-go@v3
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          go-version: ^1.18
+          go-version-file: ./go.mod
 
       - name: Set variables
         run: |
@@ -40,8 +40,6 @@ jobs:
 
       - name: Append more CIDRs
         run: |
-          curl -sSL https://www.cloudflare.com/ips-v4 | grep "/" >> data/cloudflare
-          curl -sSL https://www.cloudflare.com/ips-v6 | grep "/" >> data/cloudflare
           curl -sSL https://api.fastly.com/public-ip-list | jq --raw-output '.addresses[],.ipv6_addresses[]' >> data/fastly
           curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/cloudfront
           curl -sSL https://raw.githubusercontent.com/QiuSimons/Netflix_IP/master/NF_only.txt | grep "/" >>data/netflix
