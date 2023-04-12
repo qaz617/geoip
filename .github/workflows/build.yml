@@ -40,7 +40,7 @@ jobs:
 
       - name: Append more CIDRs
         run: |
-          sudo apt-get install ipcalc
+          sudo apt-get install -y ipcalc
           curl -sSL https://api.fastly.com/public-ip-list | jq --raw-output '.addresses[],.ipv6_addresses[]' >> data/fastly
           #curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/cloudfront
           #curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service | contains("CLOUDFRONT","GLOBALACCELERATOR","AMAZON","EC2")) | select(.region != "cn-north-1" and .region != "cn-northwest-1") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/aws
