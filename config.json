@@ -138,7 +138,7 @@
         "outputName": "geoip-asn.dat",
         "wantedList": [
           "cloudflare",
-          "cloudfront",
+          "aws",
           "facebook",
           "fastly",
           "google",
@@ -165,7 +165,7 @@
           "cn",
           "private",
           "cloudflare",
-          "cloudfront",
+          "aws",
           "facebook",
           "fastly",
           "google",
@@ -190,7 +190,7 @@
         "outputName": "Country-asn.mmdb",
         "wantedList": [
           "cloudflare",
-          "cloudfront",
+          "aws",
           "facebook",
           "fastly",
           "google",
