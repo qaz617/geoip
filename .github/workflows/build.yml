@@ -40,11 +40,8 @@ jobs:
 
       - name: Append more CIDRs
         run: |
-          sudo apt-get install -y ipcalc
           curl -sSL https://api.fastly.com/public-ip-list | jq --raw-output '.addresses[],.ipv6_addresses[]' >> data/fastly
-          #curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service == "CLOUDFRONT") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/cloudfront
-          #curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service | contains("CLOUDFRONT","GLOBALACCELERATOR","AMAZON","EC2")) | select(.region != "cn-north-1" and .region != "cn-northwest-1") | .ip_prefix,.ipv6_prefix' | grep "/" >> data/aws
-          curl -sSL https://ip-ranges.amazonaws.com/ip-ranges.json | jq --raw-output '.prefixes[],.ipv6_prefixes[] | select(.service | contains("CLOUDFRONT","GLOBALACCELERATOR","AMAZON","EC2")) | select(.region != "cn-north-1" and .region != "cn-northwest-1") | .ip_prefix,.ipv6_prefix' | grep "/" | while read line; do ipcalc -c $line | awk '/Address/ {print $2} /Netmask/ {print $4}'; done | paste -d '/' - - >> data/aws
+          curl -sSL https://raw.githubusercontent.com/qaz617/Netflix_IP/master/getflix.txt | grep "/" >>data/aws
           curl -sSL https://raw.githubusercontent.com/qaz617/Netflix_IP/master/NF_only.txt | grep "/" >>data/netflix
           curl -O "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list" 
           awk '{match($0, /[0-9]+\.[0-9]+\.[0-9]+\.*[0-9]+\/[0-9]+/); print substr($0, RSTART, RLENGTH)}' Telegram.list >>data/telegram
