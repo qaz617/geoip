@@ -1,6 +1,6 @@
 module github.com/Loyalsoldier/geoip
 
-go 1.25.5
+go 1.26.9
 
 require (
 	github.com/klauspost/compress v1.20.1
